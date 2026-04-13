@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <title>SYMPHOSIZER</title>
+
+  <link rel="stylesheet" type="text/css" href="styles/splitting.css" />
+  <link rel="stylesheet" type="text/css" href="styles/splitting-cells.css" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/color-picker.css" />
+
+  <script src="js/splitting.min.js"></script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+
+<body ontouchstart>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="tutorial" tabindex="-1" data-backdrop="static" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="bkgc" role="document">
+      <div class="modal-content">
+        <div class="loading" style="padding-left: 50px;" id="loadingscreen" data-splitting> LOADING
+          <span class="whitespace2" style="--char-index:4; margin-left: 2vw; color: rgb(255, 255, 255);"></span>
+        </div>
+        <div class="tutorial" id="tutorialscreen">
+          <button type="button" class="btn_play" id="btn_play" data-dismiss="modal">
+            <div id="playAnim" data-splitting>Play</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- slider -->
+  <div class="micSliderContainer" id="micSliderContainer">
+    <div class="micSliderBox">
+      <svg width="538" height="30" viewBox="0 0 538 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="st0" d="M0.25 14H27.75" stroke="black" stroke-width='2px' />
+        <path class="st0" d="M510.25 14H537.75" stroke="black" stroke-width='2px' />
+        <path class="st0" d="M524 0.25L524 27.75" stroke="black" stroke-width='2px' />
+      </svg>
+      <input type="range" min="0" max="100" value="50" id="micSlider">
+    </div>
+  </div>
+
+  <!-- menu -->
+  <div class="menu-box">
+    <div class="disablemenu" id="disablemenu"></div>
+    <ul class="menu menu-btns">
+      <li>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 169 36" style="enable-background:new 0 0 169 36;" xml:space="preserve">
+          <g id="Group_103">
+            <path id="Vector_33" class="st0" d="M84.4,36V16" />
+            <g class="st1">
+              <text transform="matrix(1 0 0 1 27.0665 10.5161)" class="st1">SHOW/HIDE TOOLS</text>
+            </g>
+          </g>
+        </svg>
+        <button id="btn_1" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60; user-select: none;" xml:space="preserve">
+            <polygon class="toggle" points="37.6,23.1 36.9,22.4 30,29.3 23.1,22.4 22.4,23.1 29.3,30 22.4,36.9 23.1,37.6 30,30.7 36.9,37.6 37.6,36.9 30.7,30" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_2" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <path d="M30,34.7c2.4,0,4.2-2,4.2-4.4v-7.2c0-2.4-1.9-4.4-4.2-4.4c-2.4,0-4.2,2-4.2,4.4v7.2C25.8,32.7,27.6,34.7,30,34.7z M26.8,23.2c0-1.9,1.5-3.4,3.2-3.4c1.8,0,3.2,1.5,3.2,3.4v7.2c0,1.9-1.5,3.4-3.2,3.4c-1.8,0-3.2-1.5-3.2-3.4V23.2z" />
+            <path d="M30.5,40.3v-2.5c3.9-0.3,7-3.5,7-7.5h-1c0,3.6-2.9,6.5-6.5,6.5c-3.6,0-6.5-2.9-6.5-6.5h-1c0,4,3.1,7.2,7,7.5v2.5l-7,0v1l15,0v-1L30.5,40.3z" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_3" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <path d="M38.9,29.1C39,28,38,27,36.9,27c-0.4,0-0.8,0.1-1.1,0.3c-0.1-1.1-1-1.9-2.1-1.9c-0.4,0-0.8,0.1-1.1,0.3 c-0.1-1.1-1-1.9-2.1-1.9c-0.4,0-0.8,0.1-1.1,0.3v-3.9c0-1.1-0.9-2.1-2.1-2.1c-1.1,0-2.1,0.9-2.1,2.1v9.3l-0.5-0.8h0 c-0.6-0.9-1.9-1.2-2.9-0.5c-0.9,0.6-1.2,1.9-0.5,2.9l0,0l4.9,7.2l0,0c1.2,2,3.3,3.3,5.8,3.3c3.7,0,6.8-3,6.8-6.7v0v0v-4.9L38.9,29.1 L38.9,29.1z M38.4,29.1l-0.5,0v0v0.9V35v0c0,3.2-2.6,5.8-5.8,5.8c-2.1,0-3.9-1.1-5-2.8l-0.4,0.3l0,0l0.4-0.3c0,0,0,0,0,0l-4.9-7.2 c-0.3-0.5-0.2-1.2,0.3-1.5c0.5-0.3,1.2-0.2,1.5,0.3l0,0l1.4,2.1l0.4-0.3h0l-0.4,0.3c0.1,0.2,0.4,0.3,0.6,0.2 c0.2-0.1,0.4-0.3,0.4-0.5v-1.2v-9.7c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1V26c0,0,0,0,0,0v0.3v2.8v0.4h1v-0.4v-2.8v-0.4 c0-0.6,0.5-1,1.1-1c0.6,0,1.1,0.5,1.1,1.1v1.6c0,0,0,0,0,0v1.5v0.4h1v-0.4v-1.5c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v0.6h0 v1.3h1v-0.3h0c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1L38.4,29.1L38.4,29.1z" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_4" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <path d="M25.9,32.2l3.3-8.2l3.5,8.2H25.9z M37.2,35.9l-6.5-15.3h-1.6l-6.3,15.4c-0.6,1.4-1.1,2.5-2.2,3.2v0.1h4v-0.1 c-1-0.8-0.9-1.7-0.3-3.1l1-2.6h7.8l1.1,2.6c0.6,1.3,0.7,2.5-0.2,3.2v0.1h5.3v-0.1C38.4,38.5,37.9,37.6,37.2,35.9z" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_5" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <path d="M36.3,20.1H23.7c-2,0-3.6,1.6-3.6,3.6v12.6c0,2,1.6,3.6,3.6,3.6h12.6c2,0,3.6-1.6,3.6-3.6V23.7 C39.9,21.7,38.3,20.1,36.3,20.1z M36.3,21.1c0.5,0,1,0.2,1.4,0.4L30,29.3l-7.7-7.7c0.4-0.3,0.9-0.4,1.4-0.4H36.3z M21.1,36.3V23.7 c0-0.5,0.2-1,0.4-1.4l7.7,7.7l-7.7,7.7C21.3,37.3,21.1,36.8,21.1,36.3z M23.7,38.9c-0.5,0-1-0.2-1.4-0.4l7.7-7.7l7.7,7.7 c-0.4,0.3-0.9,0.4-1.4,0.4H23.7z M38.9,36.3c0,0.5-0.2,1-0.4,1.4L30.7,30l7.7-7.7c0.3,0.4,0.4,0.9,0.4,1.4V36.3z" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_6" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <g>
+              <path d="M29.2,28.7c-0.2,0.2-0.3,0.3-0.4,0.5c-0.1-0.1-0.2-0.3-0.4-0.5c-0.5-0.6-1.3-1.3-2.2-2.1c-1.8-1.5-4.5-3.1-7.4-3.1v1 c2.6,0,5,1.4,6.8,2.9c0.9,0.7,1.6,1.5,2.1,2c0.2,0.2,0.4,0.5,0.5,0.6c-0.1,0.2-0.3,0.4-0.5,0.6c-0.5,0.6-1.2,1.3-2.1,2 c-1.8,1.5-4.2,2.9-6.8,2.9v1c2.9,0,5.6-1.6,7.4-3.1c0.9-0.8,1.7-1.5,2.2-2.1c0.2-0.2,0.3-0.3,0.4-0.5c0.1,0.1,0.2,0.3,0.4,0.5 c0.5,0.6,1.3,1.3,2.2,2.1c1.8,1.5,4.5,3.1,7.4,3.1v-1c-2.6,0-5-1.4-6.8-2.9c-0.9-0.7-1.6-1.5-2.1-2c-0.2-0.2-0.4-0.5-0.5-0.6 c0.1-0.2,0.3-0.4,0.5-0.6c0.5-0.6,1.2-1.3,2.1-2c1.8-1.5,4.2-2.9,6.8-2.9v-1c-2.9,0-5.6,1.6-7.4,3.1C30.5,27.4,29.7,28.1,29.2,28.7 z" />
+              <polygon points="38.8,22.5 38.8,25.5 41.2,24" />
+              <polygon points="38.8,37.5 41.2,36 38.8,34.5" />
+            </g>
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_7" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <rect x="42.2" y="30.4" width="1" height="6.2" />
+            <rect x="39" y="27.7" width="1" height="8.9" />
+            <rect x="35.8" y="23.4" width="1" height="13.1" />
+            <rect x="32.7" y="27.2" width="1" height="9.4" />
+            <rect x="29.5" y="31.4" width="1" height="5.2" />
+            <rect x="26.3" y="33.5" width="1" height="3.1" />
+            <rect x="23.2" y="32.6" width="1" height="4" />
+            <rect x="20" y="29.1" width="1" height="7.5" />
+            <rect x="16.8" y="26.1" width="1" height="10.5" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="btn_8" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <rect x="42.2" y="23.4" width="1" height="6.2" />
+            <rect x="39" y="23.4" width="1" height="8.9" />
+            <rect x="35.8" y="23.4" width="1" height="13.1" />
+            <rect x="32.7" y="23.4" width="1" height="9.4" />
+            <rect x="29.5" y="23.4" width="1" height="5.2" />
+            <rect x="26.3" y="23.4" width="1" height="3.1" />
+            <rect x="23.2" y="23.4" width="1" height="4" />
+            <rect x="20" y="23.4" width="1" height="7.5" />
+            <rect x="16.8" y="23.4" width="1" height="10.5" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 169 36" style="enable-background:new 0 0 169 36;" xml:space="preserve">
+          <g id="Group_102">
+            <path id="Vector_33" class="st0" d="M84.4,36V16" />
+            <g class="st1">
+              <text transform="matrix(1 0 0 1 49.6 10.5161)" class="st1">SHOW INFO</text>
+            </g>
+          </g>
+        </svg>
+        <button id="btn_9" type="button">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <path d="M29.9,23.5c1,0,1.7-0.8,1.7-1.8S30.9,20,29.9,20s-1.7,0.8-1.7,1.8S28.9,23.5,29.9,23.5z M31.3,37.1V26h0l-3.7,0.7v0.1 c0.9,0.5,1.1,1.2,1.1,2.6v7.6c0,1.8-0.2,2.3-1.1,2.8V40h4.9v-0.1C31.5,39.4,31.3,38.9,31.3,37.1z" />
+            <g><rect x="-5" y="-5" class="st0" width="70" height="70"/></g>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- nav/title -->
+  <nav id="nav">
+    <ul class="nav">
+      <li id="subText1">
+        SOUND ACTIVATED<br>TYPOGRAPHIC INSTRUMENT
+      </li>
+      <li class="title">
+        SYMPHOSIZER
+      </li>
+      <li id="subText2">
+        CREATED BY COLLINS IN COLLABORATION WITH<br>IVAN CRUZ, DINAMO AND SAN FRANCISCO SYMPHONY
+      </li>
+    </ul>
+  </nav>
+
+  <!-- display input/display -->
+  <div class="container" id="container">
+    <input type="text" id="input" value="MAKE SOME NOISE" maxlength="15" spellcheck="false" />
+    <div id="display" data-splitting> MAKE SOME NOISE </div>
+  </div>
+
+  <!-- tutorial tool tips -->
+  <div class="tutorialToolTip" id="tooltips">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 933.4 124" style="enable-background:new 0 0 933.4 124;" xml:space="preserve">
+      <g id="Group_113">
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 84 97)" class="st1">PLAY WITH SOUND &amp; </text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 84 113)" class="st1">ADJUST SENSITIVITY</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 358 45.2387)" class="st1">TEXT COLOR</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 261 14.602)" class="st1">PLAY WITH CURSOR</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 403 14.602)" class="st1">BACKGROUND COLOR</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 489 45.2387)" class="st1">SHUFFLE COLORS</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 726 104)" class="st1">ALIGN TEXT TOP</text>
+        </g>
+        <g class="st0">
+          <text transform="matrix(1 0 0 1 556 14.602)" class="st1">ALIGN TEXT BOTTOM</text>
+        </g>
+        <path class="st0" d="M398,53v23"></path>
+        <path class="st0" d="M542,73V53"></path>
+        <path class="st0" d="M468,73V23"></path>
+        <path class="st0" d="M718,100h-35"></path>
+        <path class="st0" d="M216,100h70"></path>
+        <path class="st0" d="M618,73V23"></path>
+        <path class="st0" d="M324,73V23"></path>
+      </g>
+    </svg>
+  </div>
+
+  <!-- color picker -->
+  <div class="menu" id="colorpicker">
+    <div id="color-picker-font-div" style="display: none">
+      <input id="color-picker-font" class="color-picker" />
+    </div>
+    <div id="color-picker-bg-div" style="display: none">
+      <input id="color-picker-bg" class="color-picker" />
+    </div>
+  </div>
+
+  <main></main>
+
+</body>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/color-picker.js"></script>
+<script src="js/p5.min.js"></script>
+<script src="js/p5.sound.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+  $("#myModal").on('show.bs.modal', function () {
+    modalResize();
+  })
+  $(window).resize(function () {
+    modalResize();
+  })
+  function modalResize() {
+    var winWidth = $(document.body).width();
+    var modalWidth = $("#docModalContent").width();
+    var width = (winWidth - modalWidth) / 2 + "px"
+    $("#myModal").find(".modal-dialog").css({
+      'margin-left': width
+    });
+  }
+  $('#tutorial').modal('show');
+</script>
+
+</html>
