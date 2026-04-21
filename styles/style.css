@@ -1,7 +1,7 @@
 @font-face {
   font-family: "ABC Symphony Display";
   /*src: url("../fonts/ABCSymphonyDisplayVariable.ttf");*/
-  src: url("../fonts/MiSans Rounded F.ttf");
+  src: url("../fonts/HanYiaranyatheaterfestivalTiVF-260413VF-02.ttf");
 }
 
 @font-face {
@@ -222,7 +222,7 @@ body {
   display: flex;
   margin-right: 50px;
   margin: auto;
-  font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+  font-variation-settings: "YTUC" 100;
   -webkit-animation: 2.9s ease 0s normal forwards 1 fadeout;
           animation: 2.9s ease 0s normal forwards 1 fadeout;
 }
@@ -240,37 +240,37 @@ body {
 
 @-webkit-keyframes load-bounce-char {
   0% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   25% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   50% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   75% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   100% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
 }
 
 @keyframes load-bounce-char {
   0% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   25% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   50% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   75% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   100% {
-    font-variation-settings: "vrsb" 0, "hght" 70, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
 }
 
@@ -374,49 +374,49 @@ body {
 
 @-webkit-keyframes bounce-end {
   to {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
 }
 
 @keyframes bounce-end {
   to {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
 }
 
 @-webkit-keyframes bounce-char {
   0% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   25% {
-    font-variation-settings: "vrsb" 0, "hght" 10, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   50% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   75% {
-    font-variation-settings: "vrsb" 0, "hght" 10, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   100% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
 }
 
 @keyframes bounce-char {
   0% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   25% {
-    font-variation-settings: "vrsb" 0, "hght" 10, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   50% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
   75% {
-    font-variation-settings: "vrsb" 0, "hght" 10, "ital" 0;
+    font-variation-settings: "YTUC" 10;
   }
   100% {
-    font-variation-settings: "vrsb" 0, "hght" 25, "ital" 0;
+    font-variation-settings: "YTUC" 100;
   }
 }
 
@@ -858,7 +858,7 @@ button:focus {
   margin: auto;
   padding: 0px;
   font-family: "ABC Symphony Display", sans-serif;
-  font-variation-settings: "hght" 25, "ital" 0, "vrsb" 0;
+  font-variation-settings: "YTUC" 100;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 0;
@@ -914,7 +914,7 @@ button:focus {
   border: none;
   position: absolute;
   color: transparent;
-  height: auto;
+  height: 100%;
   width: 200%;
   white-space: nowrap;
   text-align: center;
@@ -922,6 +922,7 @@ button:focus {
   overflow-y: hidden;
   background-color: transparent;
   left: -50%;
+  padding-top: 12vh;
 }
 
 #input:focus,

@@ -311,7 +311,7 @@ function draw() {
   charnum = splitChars[wornum].chars.length;
   var max = map(charnum, 0, 15, 1.8, 1)
 
-  fontSize = constrain((windowWidth / 3) * max, 50, windowHeight * .75);
+  fontSize = constrain((windowWidth / 8) * max, 20, windowHeight * .12);
 
   if (isMic && !isReady) {
     // get volume from adding height
@@ -408,7 +408,8 @@ function draw() {
     // set font properties for each letter
     try {
       splitChars[wornum].chars[i].style.fontSize = fontSize + 'px';
-      splitChars[wornum].chars[i].style.fontVariationSettings = "'vrsb'" + isTop + ", 'hght'" + smoothH[i] + ", 'ital'" + smoothI + '';
+      var ytuValue = constrain(smoothH[i], 10, 100);
+      splitChars[wornum].chars[i].style.fontVariationSettings = "'YTUC'" + ytuValue + '';
       splitChars[wornum].chars[i].style.transform = 'skew(' + smoothSkew + 'rad)';
     } catch (err) {
       console.error("splitChars :" + err.message);
