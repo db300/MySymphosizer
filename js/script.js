@@ -193,7 +193,7 @@ function setup() {
   for (var i = 0; i < 1024; i++) {
     smoothSpectrum[i] = 0
   }
-  for (var i = 0; i < 15; i++) {
+  for (var i = 0; i < 30; i++) {
     smoothH[i] = 0
   }
   disableButtons()
@@ -309,9 +309,10 @@ function draw() {
 
   // calculate font size
   charnum = splitChars[wornum].chars.length;
-  var max = map(charnum, 0, 15, 1.8, 1)
+  var max = map(charnum, 0, 30, 2.0, 0.8)
 
   fontSize = constrain((windowWidth / 8) * max, 20, windowHeight * .12);
+  elInput.style.fontSize = fontSize + 'px'
 
   if (isMic && !isReady) {
     // get volume from adding height
@@ -350,8 +351,8 @@ function draw() {
 
     // Calculate Second Stage Skew and Scale
     if (vol > .98) {
-      smoothSkew = lerp(smoothSkew, -0.9, 0.18)
-      loudSize = lerp(loudSize, 4, 0.18)
+      smoothSkew = lerp(smoothSkew, -0.3, 0.18)
+      loudSize = lerp(loudSize, 2, 0.18)
     } else {
       smoothSkew = lerp(smoothSkew, 0, 0.18)
       loudSize = lerp(loudSize, 1, 0.18)
@@ -377,7 +378,7 @@ function draw() {
         if(charnum < 10){
           band = int(map(charnummod, 2, 12, 150, 64));
         } else {
-          band = int(map(charnummod, 0, 14, 512, 64));
+          band = int(map(charnummod, 0, 29, 512, 64));
         }
         smoothH[i] = lerp(smoothH[i], map(fft.getEnergy(int(i * band + 400), int(i * band + band + 400)), 0, 255, 0, 400) - 100 * (micThreshold * 1.1), 0.3);
       }
@@ -410,6 +411,7 @@ function draw() {
       splitChars[wornum].chars[i].style.fontSize = fontSize + 'px';
       var ytuValue = constrain(smoothH[i], 10, 100);
       splitChars[wornum].chars[i].style.fontVariationSettings = "'YTUC'" + ytuValue + '';
+      smoothSkew = constrain(smoothSkew, -0.35, 0.35);
       splitChars[wornum].chars[i].style.transform = 'skew(' + smoothSkew + 'rad)';
     } catch (err) {
       console.error("splitChars :" + err.message);
@@ -417,6 +419,7 @@ function draw() {
   }
 
   // set the scale to words
+  loudSize = constrain(loudSize, 1, 2);
   for (var h = 0; h < words.length; h++) {
     words[h].style.transform = 'scale(' + loudSize + ')'
   }

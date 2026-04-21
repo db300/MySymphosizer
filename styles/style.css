@@ -932,7 +932,8 @@ button:focus {
 
 #input {
   background-color: transparent;
-  font-size: min(30vw, 700px);
+  /*font-size: min(30vw, 700px);*/
+  font-size: inherit;
   height: 100%;
 }
 
